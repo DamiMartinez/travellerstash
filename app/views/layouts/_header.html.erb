@@ -1,0 +1,37 @@
+<!-- HEADER  -->
+<header class="main-header">
+	<div class="container">
+		<div class="logo">
+      <%= link_to image_tag("logo.png", alt: "logo"), root_path, class: "animsition-link" %>
+		</div>
+
+		<div class="menu">
+			<!-- desktop navbar -->
+			<nav class="desktop-nav">
+				<ul class="first-level">
+          <li><%= link_to "Home", root_path, class: "animsition-link" %></li>
+          <li><%= link_to "about us", welcome_about_path, class: "animsition-link" %></li>
+					<li><a href="">directory</a>
+						<ul class="second-level">
+							<li><a href="/blogs/500k/atlasobscura_com" class="animsition-link">+500K </a></li>
+							<li><a href="/blogs/250k/guias-viajar_com" class="animsition-link">+250K </a></li>
+							<li><a href="/blogs/50k/theblondeabroad_com" class="animsition-link">+50K </a></li>
+							<li><a href="/blogs/1k/thebigoutside_com" class="animsition-link">+1K </a></li>
+							<li><a href="/blogs/us/thepointsguy_com" class="animsition-link">United States </a></li>
+							<li><a href="/blogs/fr/routard_com" class="animsition-link">France </a></li>
+							<li><a href="/blogs/sp/viajeroscallejeros_com" class="animsition-link">Spain </a></li>
+							<li><a href="/blogs/ph/ourawesomeplanet_com" class="animsition-link">Philippines </a></li>
+						</ul>
+					</li>						
+				</ul>
+			</nav>
+			<!-- mobile navbar -->
+			<nav class="mobile-nav"></nav>
+			<div class="menu-icon">
+				<div class="line"></div>
+				<div class="line"></div>
+				<div class="line"></div>
+			</div>
+		</div>
+	</div>
+</header>

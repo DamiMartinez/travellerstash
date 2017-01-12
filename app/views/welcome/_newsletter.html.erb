@@ -1,0 +1,72 @@
+<!-- newsletter -->
+	<section class="green-section wow fadeInUp" style="padding:50px 0">
+		<div class="container">
+			<div class="col-md-6 col-sm-12">
+				<div class="row">
+					<span class="white-text montserrat-text uppercase" style="font-size:30px;display:block;">
+						YOU OWN A TRAVEL BLOG?
+					</span>
+          <a class="link btn white" href="https://pie2re.typeform.com/to/y4fjvj" style="margin-top: 30px;" data-mode="1">BE PART</a>
+<script>(function(){var qs,js,q,s,d=document,gi=d.getElementById,ce=d.createElement,gt=d.getElementsByTagName,id='typef_orm',b='https://s3-eu-west-1.amazonaws.com/share.typeform.com/';if(!gi.call(d,id)){js=ce.call(d,'script');js.id=id;js.src=b+'share.js';q=gt.call(d,'script')[0];q.parentNode.insertBefore(js,q)}})()</script>
+				</div>
+			</div>
+
+			<div class="col-md-6 col-sm-12">
+				<div class="row">
+					<div class="white-section" style="padding:20px">
+						<span class="montserrat-text uppercase" style="font-size:24px">stay informed with our newsletter</span>
+						<p>
+							Get the latest trends in Travel Blogging.
+						</p>
+            <%= form_tag(controller:"welcome", action: "newsletter") do %>
+              <div class="input_1">
+                <input id="email" name="email[email]" type="email" />
+              <span>your email</span>
+              </div>
+              <button type="submit" class="btn green" style="margin-top: 20px"><span>send</span></button>
+            <% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+  <script type="text/javascript" charset="utf-8">
+    $(window).load(function() {
+      new WOW().init();
+
+      // initialise flexslider
+      $('.site-hero').flexslider({
+        animation: "fade",
+        directionNav: false,
+        controlNav: false, 
+        keyboardNav: true,
+        slideToStart: 0,
+        animationLoop: true,
+        pauseOnHover: false,
+        slideshowSpeed: 4000, 
+      });
+
+
+      // initialize isotope
+      var $container = $('.portfolio_container');
+      $container.isotope({
+        filter: '*',
+      });
+     
+      $('.portfolio_filter a').click(function(){
+        $('.portfolio_filter .active').removeClass('active');
+        $(this).addClass('active');
+     
+        var selector = $(this).attr('data-filter');
+        $container.isotope({
+          filter: selector,
+          animationOptions: {
+            duration: 500,
+            animationEngine : "jquery"
+          }
+        });
+        return false;
+      }); 
+    });
+  </script>
