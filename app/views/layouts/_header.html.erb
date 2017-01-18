@@ -1,37 +1,28 @@
-<!-- HEADER  -->
-<header class="main-header">
-	<div class="container">
-		<div class="logo">
-      <%= link_to image_tag("logo.png", alt: "logo"), root_path, class: "animsition-link" %>
-		</div>
-
-		<div class="menu">
-			<!-- desktop navbar -->
-			<nav class="desktop-nav">
-				<ul class="first-level">
-          <li><%= link_to "Home", root_path, class: "animsition-link" %></li>
-          <li><%= link_to "about us", welcome_about_path, class: "animsition-link" %></li>
-					<li><a href="">directory</a>
-						<ul class="second-level">
-							<li><a href="/blogs/500k/atlasobscura_com" class="animsition-link">+500K </a></li>
-							<li><a href="/blogs/250k/guias-viajar_com" class="animsition-link">+250K </a></li>
-							<li><a href="/blogs/50k/theblondeabroad_com" class="animsition-link">+50K </a></li>
-							<li><a href="/blogs/1k/thebigoutside_com" class="animsition-link">+1K </a></li>
-							<li><a href="/blogs/us/thepointsguy_com" class="animsition-link">United States </a></li>
-							<li><a href="/blogs/fr/routard_com" class="animsition-link">France </a></li>
-							<li><a href="/blogs/sp/viajeroscallejeros_com" class="animsition-link">Spain </a></li>
-							<li><a href="/blogs/ph/ourawesomeplanet_com" class="animsition-link">Philippines </a></li>
-						</ul>
-					</li>						
-				</ul>
-			</nav>
-			<!-- mobile navbar -->
-			<nav class="mobile-nav"></nav>
-			<div class="menu-icon">
-				<div class="line"></div>
-				<div class="line"></div>
-				<div class="line"></div>
-			</div>
-		</div>
-	</div>
-</header>
+<!-- Nav -->
+<nav id="nav">
+	<a href="/"><p style="float:left;"> Traveller<span style="font-weight:400;">Stash</span></p></a>
+		<ul>
+			<li><%= link_to "ABOUT US", welcome_about_path, class: "active" %></li>			
+      <div class="dropdown">
+        <li><a href="/" class="active">CATEGORIES</a></li>
+        <div class="dropdown-content">
+          <a href="/flighthacks/skyscanner">Flight Hacks</a>
+          <a href="/hotelbooking/hot_hotels">Hotel Booking</a>
+          <a href="/multimodalsearch/waymate">Multimodal Search</a>
+          <a href="/carrental/relayrides">Car Rental</a>
+          <a href="/afterbooking/seat_guru">After Booking</a>
+          <a href="/packages/travelbird">Packages</a>
+          <a href="/ridesharing/blablacar">Ride Sharing</a>
+          <a href="/vacationrental/airbnb">Vacation Rental</a>
+          <a href="/backpackers/poshpacker">Backpackers Accommodation</a>
+          <a href="/inspiration/wayn">Inspiration</a>
+          <a href="/guides/tripadvisor">Guides</a>
+          <a href="/businesstravel/rocketrip">Business Travel</a>
+          <a href="/loyaltyprograms/rocket_miles">Loyalty Programs</a>
+          <a href="/travelafrica/sleepout">Travel Africa</a>
+          <a href="/planners/tripcake">Planners</a>
+        </div>
+      </div>					
+			<li><a href="https://pie2re.typeform.com/to/MoEgos"><u>SUBMIT</u></a></li>
+		</ul>
+</nav>

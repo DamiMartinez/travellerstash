@@ -1,4 +1,293 @@
 <%= render "/welcome/landing" %>
+<!-- Main -->
+<div id="main">
 
+	<!-- First Section -->
+		<section id="first" class="main special">
+			<header class="major">
+				<h2>Travel Resources Directory</h2>
+			</header>
+			<ul class="features">
+				<li>
+          <%= image_tag("aeroplane.png", alt: "aeroplane", class: "img-landing-aeroplane") %>
+					<h3>Flight Hacks</h3>
+						<ul style="font-size:16px; line-height:20px; padding-top: 10px; padding-left:61px; list-style-image: url(<%= asset_path 'bullet.png' %>);">
+              <% i = 1
+                   first_company = nil
+                @companies_rank.each do |company| %>
+                  <% if company.category_name == "Flight Hacks" and i < 3 %>
+                    <li style="text-transform: uppercase;" ><span style="white-space: nowrap;"><%= link_to "#{company.name_text}", controller: "companies", action: "show", category: "flighthacks", title: company.name_url %></span></li><br>
+                    <% if i == 1 
+                      first_company = company
+                    end %>
+                  <% i += 1
+                  end %>
+                <% end %>
+                <li class="more-info"><a href= <%="/flighthacks/#{first_company.name_url}" %> >see more</a></li>
+						</ul>
+				</li>
+				<li>
+          <%= image_tag("hotel.png", alt: "hotel", class: "img-landing-resources") %>
+					<h3>Hotel Booking</h3>
+					<ul style="font-size:16px; line-height:20px; padding-top: 10px; padding-left:61px; list-style-image: url(<%= asset_path 'bullet.png' %>);">
+							<% i = 1
+                   first_company = nil
+                @companies_rank.each do |company| %>
+                  <% if company.category_name == "Hotel Booking" and i < 3 %>
+                    <li style="text-transform: uppercase;" ><span style="white-space: nowrap;"><%= link_to "#{company.name_text}", controller: "companies", action: "show", category: "hotelbooking", title: company.name_url %></span></li><br>
+                    <% if i == 1 
+                      first_company = company
+                    end %>
+                  <% i += 1
+                  end %>
+                <% end %>
+                <li class="more-info"><a href= <%="/hotelbooking/#{first_company.name_url}" %> >see more</a></li>
+						</ul>
+				</li>
+				<li>
+          <%= image_tag("booking.png", alt: "booking", class: "img-landing-resources") %>
+					<h3>Multimodal Search</h3>
+					<ul style="font-size:16px; line-height:20px; padding-top: 10px; padding-left:61px; list-style-image: url(<%= asset_path 'bullet.png' %>);">
+							<% i = 1
+                   first_company = nil
+                @companies_rank.each do |company| %>
+                  <% if company.category_name == "Multimodal Search" and i < 3 %>
+                    <li style="text-transform: uppercase;" ><span style="white-space: nowrap;"><%= link_to "#{company.name_text}", controller: "companies", action: "show", category: "multimodalsearch", title: company.name_url %></span></li><br>
+                    <% if i == 1 
+                      first_company = company
+                    end %>
+                  <% i += 1
+                  end %>
+                <% end %>
+                <li class="more-info"><a href= <%="/multimodalsearch/#{first_company.name_url}" %> >see more</a></li>
+						</ul>
+				</li>
+
+			</ul>
+			<ul class="features">
+				<li>
+          <%= image_tag("car.png", alt: "car", class: "img-landing-resources") %>
+					<h3>Car Rental</h3>
+					<ul style="font-size:16px; line-height:20px; padding-top: 10px; padding-left:61px; list-style-image: url(<%= asset_path 'bullet.png' %>);">
+							<% i = 1
+                   first_company = nil
+                @companies_rank.each do |company| %>
+                  <% if company.category_name == "Car Rental" and i < 3 %>
+                    <li style="text-transform: uppercase;" ><span style="white-space: nowrap;"><%= link_to "#{company.name_text}", controller: "companies", action: "show", category: "carrental", title: company.name_url %></span></li><br>
+                    <% if i == 1 
+                      first_company = company
+                    end %>
+                  <% i += 1
+                  end %>
+                <% end %>
+                <li class="more-info"><a href= <%="/carrental/#{first_company.name_url}" %> >see more</a></li>
+						</ul>
+				</li>
+				<li>
+          <%= image_tag("passport.png", alt: "passport", class: "img-landing-resources") %>
+					<h3>After Booking</h3>
+					<ul style="font-size:16px; line-height:20px; padding-top: 10px; padding-left:61px; list-style-image: url(<%= asset_path 'bullet.png' %>);">
+							<% i = 1
+                   first_company = nil
+                @companies_rank.each do |company| %>
+                  <% if company.category_name == "After Booking" and i < 3 %>
+                    <li style="text-transform: uppercase;" ><span style="white-space: nowrap;"><%= link_to "#{company.name_text}", controller: "companies", action: "show", category: "afterbooking", title: company.name_url %></span></li><br>
+                    <% if i == 1 
+                      first_company = company
+                    end %>
+                  <% i += 1
+                  end %>
+                <% end %>
+                <li class="more-info"><a href= <%="/afterbooking/#{first_company.name_url}" %> >see more</a></li>
+						</ul>
+				</li>
+				<li>
+          <%= image_tag("package.png", alt: "package", class: "img-landing-resources") %>
+					<h3>Packages</h3>
+					<ul style="font-size:16px; line-height:20px; padding-top: 10px; padding-left:61px; list-style-image: url(<%= asset_path 'bullet.png' %>);">
+							<% i = 1
+                   first_company = nil
+                @companies_rank.each do |company| %>
+                  <% if company.category_name == "Packages" and i < 3 %>
+                    <li style="text-transform: uppercase;" ><span style="white-space: nowrap;"><%= link_to "#{company.name_text}", controller: "companies", action: "show", category: "packages", title: company.name_url %></span></li><br>
+                    <% if i == 1 
+                      first_company = company
+                    end %>
+                  <% i += 1
+                  end %>
+                <% end %>
+                <li class="more-info"><a href= <%="/packages/#{first_company.name_url}" %> >see more</a></li>
+						</ul>
+				</li>
+			</ul>
+			<ul class="features">
+				<li>
+          <%= image_tag("jeep.png", alt: "jeep", class: "img-landing-resources") %>
+					<h3>Ride Sharing</h3>
+					<ul style="font-size:16px; line-height:20px; padding-top: 10px; padding-left:61px; list-style-image: url(<%= asset_path 'bullet.png' %>);">
+							<% i = 1
+                   first_company = nil
+                @companies_rank.each do |company| %>
+                  <% if company.category_name == "Ride Sharing" and i < 3 %>
+                    <li style="text-transform: uppercase;" ><span style="white-space: nowrap;"><%= link_to "#{company.name_text}", controller: "companies", action: "show", category: "ridesharing", title: company.name_url %></span></li><br>
+                    <% if i == 1 
+                      first_company = company
+                    end %>
+                  <% i += 1
+                  end %>
+                <% end %>
+                <li class="more-info"><a href= <%="/ridesharing/#{first_company.name_url}" %> >see more</a></li>
+						</ul>
+				</li>
+				<li>
+          <%= image_tag("room-key.png", alt: "room-key", class: "img-landing-resources") %>
+					<h3>Vacation Rental</h3>
+					<ul style="font-size:16px; line-height:20px; padding-top: 10px; padding-left:61px; list-style-image: url(<%= asset_path 'bullet.png' %>);">
+							<% i = 1
+                   first_company = nil
+                @companies_rank.each do |company| %>
+                  <% if company.category_name == "Vacation Rental" and i < 3 %>
+                    <li style="text-transform: uppercase;" ><span style="white-space: nowrap;"><%= link_to "#{company.name_text}", controller: "companies", action: "show", category: "vacationrental", title: company.name_url %></span></li><br>
+                    <% if i == 1 
+                      first_company = company
+                    end %>
+                  <% i += 1
+                  end %>
+                <% end %>
+                <li class="more-info"><a href= <%="/vacationrental/#{first_company.name_url}" %> >see more</a></li>
+						</ul>
+				</li>
+				<li>
+          <%= image_tag("luggage.png", alt: "luggage", class: "img-landing-resources") %>
+					<h3>Backpackers Accommodation</h3>
+					<ul style="font-size:16px; line-height:20px; padding-top: 10px; padding-left:61px; list-style-image: url(<%= asset_path 'bullet.png' %>);">
+							<% i = 1
+                   first_company = nil
+                @companies_rank.each do |company| %>
+                  <% if company.category_name == "Backpackers Accommodation" and i < 3 %>
+                    <li style="text-transform: uppercase;" ><span style="white-space: nowrap;"><%= link_to "#{company.name_text}", controller: "companies", action: "show", category: "backpackers", title: company.name_url %></span></li><br>
+                    <% if i == 1 
+                      first_company = company
+                    end %>
+                  <% i += 1
+                  end %>
+                <% end %>
+                <li class="more-info"><a href= <%="/backpackers/#{first_company.name_url}" %> >see more</a></li>
+						</ul>
+				</li>
+			</ul>
+			<ul class="features">
+				<li>
+          <%= image_tag("parasailing.png", alt: "parasailing", class: "img-landing-resources") %>
+					<h3>Inspiration</h3>
+					<ul style="font-size:16px; line-height:20px; padding-top: 10px; padding-left:61px; list-style-image: url(<%= asset_path 'bullet.png' %>);">
+							<% i = 1
+                   first_company = nil
+                @companies_rank.each do |company| %>
+                  <% if company.category_name == "Inspiration" and i < 3 %>
+                    <li style="text-transform: uppercase;" ><span style="white-space: nowrap;"><%= link_to "#{company.name_text}", controller: "companies", action: "show", category: "inspiration", title: company.name_url %></span></li><br>
+                    <% if i == 1 
+                      first_company = company
+                    end %>
+                  <% i += 1
+                  end %>
+                <% end %>
+                <li class="more-info"><a href= <%="/inspiration/#{first_company.name_url}" %> >see more</a></li>
+						</ul>
+				</li>
+				<li>
+          <%= image_tag("planet-earth.png", alt: "planet-earth", class: "img-landing-resources") %>
+					<h3>Guides</h3>
+					<ul style="font-size:16px; line-height:20px; padding-top: 10px; padding-left:61px; list-style-image: url(<%= asset_path 'bullet.png' %>);">
+							<% i = 1
+                   first_company = nil
+                @companies_rank.each do |company| %>
+                  <% if company.category_name == "Guides" and i < 3 %>
+                    <li style="text-transform: uppercase;" ><span style="white-space: nowrap;"><%= link_to "#{company.name_text}", controller: "companies", action: "show", category: "guides", title: company.name_url %></span></li><br>
+                    <% if i == 1 
+                      first_company = company
+                    end %>
+                  <% i += 1
+                  end %>
+                <% end %>
+                <li class="more-info"><a href= <%="/guides/#{first_company.name_url}" %> >see more</a></li>
+						</ul>
+				</li>
+				<li>
+          <%= image_tag("suitcase.png", alt: "suitcase", class: "img-landing-resources") %>
+					<h3>Business Travel</h3>
+					<ul style="font-size:16px; line-height:20px; padding-top: 10px; padding-left:61px; list-style-image: url(<%= asset_path 'bullet.png' %>);">
+							<% i = 1
+                   first_company = nil
+                @companies_rank.each do |company| %>
+                  <% if company.category_name == "Business Travel" and i < 3 %>
+                    <li style="text-transform: uppercase;" ><span style="white-space: nowrap;"><%= link_to "#{company.name_text}", controller: "companies", action: "show", category: "businesstravel", title: company.name_url %></span></li><br>
+                    <% if i == 1 
+                      first_company = company
+                    end %>
+                  <% i += 1
+                  end %>
+                <% end %>
+                <li class="more-info"><a href= <%="/businesstravel/#{first_company.name_url}" %> >see more</a></li>
+						</ul>
+				</li>
+			</ul>
+			<ul class="features">
+				<li>
+          <%= image_tag("stars.png", alt: "stars", class: "img-landing-resources") %>
+					<h3>Loyalty Programs</h3>
+					<ul style="font-size:16px; line-height:20px; padding-top: 10px; padding-left:61px; list-style-image: url(<%= asset_path 'bullet.png' %>);">
+							<% i = 1
+                   first_company = nil
+                @companies_rank.each do |company| %>
+                  <% if company.category_name == "Loyalty Programs" and i < 3 %>
+                    <li style="text-transform: uppercase;" ><span style="white-space: nowrap;"><%= link_to "#{company.name_text}", controller: "companies", action: "show", category: "loyaltyprograms", title: company.name_url %></span></li><br>
+                    <% if i == 1 
+                      first_company = company
+                    end %>
+                  <% i += 1
+                  end %>
+                <% end %>
+                <li class="more-info"><a href= <%="/loyaltyprograms/#{first_company.name_url}" %> >see more</a></li>
+						</ul>
+				</li>
+				<li>
+          <%= image_tag("pyramids.png", alt: "pyramids", class: "img-landing-resources") %>
+					<h3>Travel Africa</h3>
+					<ul style="font-size:16px; line-height:20px; padding-top: 10px; padding-left:61px; list-style-image: url(<%= asset_path 'bullet.png' %>);">
+							<% i = 1
+                   first_company = nil
+                @companies_rank.each do |company| %>
+                  <% if company.category_name == "Travel Africa" and i < 3 %>
+                    <li style="text-transform: uppercase;" ><span style="white-space: nowrap;"><%= link_to "#{company.name_text}", controller: "companies", action: "show", category: "travelafrica", title: company.name_url %></span></li><br>
+                    <% if i == 1 
+                      first_company = company
+                    end %>
+                  <% i += 1
+                  end %>
+                <% end %>
+                <li class="more-info"><a href= <%="/travelafrica/#{first_company.name_url}" %> >see more</a></li>
+						</ul>
+				</li>
+				<li>
+          <%= image_tag("map.png", alt: "map", class: "img-landing-resources") %>
+					<h3>Planners</h3>
+					<ul style="font-size:16px; line-height:20px; padding-top: 10px; padding-left:61px; list-style-image: url(<%= asset_path 'bullet.png' %>);">
+							<% i = 1
+                   first_company = nil
+                @companies_rank.each do |company| %>
+                  <% if company.category_name == "Planners" and i < 3 %>
+                    <li style="text-transform: uppercase;" ><span style="white-space: nowrap;"><%= link_to "#{company.name_text}", controller: "companies", action: "show", category: "planners", title: company.name_url %></span></li><br>
+                    <% if i == 1 
+                      first_company = company
+                    end %>
+                  <% i += 1
+                  end %>
+                <% end %>
+                <li class="more-info"><a href= <%="/planners/#{first_company.name_url}" %> >see more</a></li>
+						</ul>
+				</li>
+			</ul>
+
+		</section>
 <%= render "/welcome/survey" %>
-<%= render "/welcome/newsletter" %>

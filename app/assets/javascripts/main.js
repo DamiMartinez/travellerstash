@@ -1,122 +1,139 @@
 /*
-	Javascript File for AKAD Template
-	Author : Akhouad-me
-	Web    : www.akhouad.me
+	Stellar by Pixelarity
+	pixelarity.com | hello@pixelarity.com
+	License: pixelarity.com/license
 */
 
-(function($){
-	$(window).load(function(){
-		// INITIALIZE ANIMSITION
-		if($(".animsition").length){
-			$(".animsition").animsition({
-				inClass               :   'fade-in-up-sm',
-				outClass              :   'fade-out-up-sm',
-				inDuration            :    1100,
-				outDuration           :    800,
-				linkElement           :   '.animsition-link',
-				loading               :    true,
-				loadingParentElement  :   'body', 
-				unSupportCss          : [ 'animation-duration',
-										  '-webkit-animation-duration',
-										  '-o-animation-duration'
-										],
-				overlay               :   false,
-				overlayClass          :   'animsition-overlay-slie',
-				overlayParentElement  :   'body'
+(function($) {
+
+	skel.breakpoints({
+		xlarge: '(max-width: 1680px)',
+		large: '(max-width: 1280px)',
+		medium: '(max-width: 980px)',
+		small: '(max-width: 736px)',
+		xsmall: '(max-width: 480px)',
+		xxsmall: '(max-width: 360px)'
+	});
+
+	$(function() {
+
+		var	$window = $(window),
+			$body = $('body'),
+			$main = $('#main');
+
+		// Disable animations/transitions until the page has loaded.
+			$body.addClass('is-loading');
+
+			$window.on('load', function() {
+				window.setTimeout(function() {
+					$body.removeClass('is-loading');
+				}, 100);
 			});
-		}
 
-		// INPUTS EVENTS
-		$(".input_1 input, .textarea_1 textarea").focus(function(){
-			$(this).next("span").addClass("active");
-		});
-		$(".input_1 input, .textarea_1 textarea").blur(function(){
-			if($(this).val() === ""){
-				$(this).next("span").removeClass("active");
+		// Fix: Placeholder polyfill.
+			$('form').placeholder();
+
+		// Prioritize "important" elements on medium.
+			skel.on('+medium -medium', function() {
+				$.prioritize(
+					'.important\\28 medium\\29',
+					skel.breakpoint('medium').active
+				);
+			});
+
+		// Nav.
+			var $nav = $('#nav');
+
+			if ($nav.length > 0) {
+
+				// Shrink effect.
+					$main
+						.scrollex({
+							mode: 'top',
+							enter: function() {
+								$nav.addClass('alt');
+							},
+							leave: function() {
+								$nav.removeClass('alt');
+							},
+						});
+
+				// Links.
+					var $nav_a = $nav.find('a');
+
+					$nav_a
+						.scrolly({
+							speed: 1000,
+							offset: function() { return $nav.height(); }
+						})
+						.on('click', function() {
+
+							var $this = $(this);
+
+							// External link? Bail.
+								if ($this.attr('href').charAt(0) != '#')
+									return;
+
+							// Deactivate all links.
+								$nav_a
+									.removeClass('active')
+									.removeClass('active-locked');
+
+							// Activate link *and* lock it (so Scrollex doesn't try to activate other links as we're scrolling to this one's section).
+								$this
+									.addClass('active')
+									.addClass('active-locked');
+
+						})
+						.each(function() {
+
+							var	$this = $(this),
+								id = $this.attr('href'),
+								$section = $(id);
+
+							// No section for this link? Bail.
+								if ($section.length < 1)
+									return;
+
+							// Scrollex.
+								$section.scrollex({
+									mode: 'middle',
+									initialize: function() {
+
+										// Deactivate section.
+											if (skel.canUse('transition'))
+												$section.addClass('inactive');
+
+									},
+									enter: function() {
+
+										// Activate section.
+											$section.removeClass('inactive');
+
+										// No locked links? Deactivate all links and activate this section's one.
+											if ($nav_a.filter('.active-locked').length == 0) {
+
+												$nav_a.removeClass('active');
+												$this.addClass('active');
+
+											}
+
+										// Otherwise, if this section's link is the one that's locked, unlock it.
+											else if ($this.hasClass('active-locked'))
+												$this.removeClass('active-locked');
+
+									}
+								});
+
+						});
+
 			}
-		});
 
-		// TABS
-		$(".bottom-line").css({
-			width : $(".tab nav a").first().width() + 20 + "px" // 20 = element's padding * 2
-		});
-		var _current_index = 0;
-		$(".tab nav a").click(function(e){
-			e.preventDefault();
-			// tab navigation styles
-			var _this = $(this);
-			var _index = _this.index();
-			if(_current_index !== _index){
-				$(".tab nav a").each(function(){
-					if($(this).hasClass("current")) $(this).removeClass("current");
-				});
-				_this.addClass("current");
-				$(".bottom-line").css({
-					left : _this.offset().left - _this.parent().offset().left + "px",
-					width : _this.width() + 20 + "px" // 20 = element's padding * 2
-				});
-
-				// show tab content
-				$(".tab_single.shown").fadeOut(200);
-				setTimeout(function(){
-					$(".tab_single").eq(_index).fadeIn(200);
-					$(".tab_single").eq(_index).addClass("shown");
-				},200);
-
-				_current_index = _index;
-			}
-		});
-
-		// NAVBAR
-		var _link = $("nav.desktop-nav ul.first-level").children("li");
-		var shown = false;
-		// show navbar 
-		$(".menu-icon").click(function(){
-			var _this = $(this);
-			$("nav.mobile-nav").slideToggle(200);
-			if(!shown){
-				_this.children("div").css("width","30px");
-				shown = true;
-			}else{
-				_this.children("div").first().css("width","30px");
-				_this.children("div").eq(1).css("width","15px");
-				_this.children("div").eq(2).css("width","20px");
-				shown = false;
-			}
-		});
-		
-		// dropdown - desktop
-		_link.hover(function(e){
-			e.preventDefault();
-			var _this = $(this);
-			if(_this.children("ul.second-level").html() !== undefined){
-				if(e.type === "mouseenter"){
-					_this.children("ul.second-level").slideDown(200);
-				}else{
-					_this.children("ul.second-level").slideUp(200);
-				}
-			}
-		});
-
-		// dropdown - mobile
-		$("nav.mobile-nav").html($("nav.desktop-nav").html()); // set navbar
-
-		var mobile_link = $("nav.mobile-nav ul.first-level").children("li");
-		mobile_link.children("a").click(function(e){
-			var _this = $(this);
-			var submenu_exists = (_this.next("ul.second-level").html() === undefined) ? false : true;
-			if(submenu_exists){
-				e.preventDefault();
-				$(".down").slideUp(200);
-				if(_this.next("ul.second-level").hasClass("down")){
-					_this.next("ul.second-level").removeClass("down");
-				}else{
-					$(".down").removeClass("down");
-					_this.next("ul.second-level").slideDown(200);
-					_this.next("ul.second-level").addClass("down");
-				}
-			}
-		});
+		// Scrolly.
+			$('.scrolly').scrolly({
+				speed: 1000
+			});
 
 	});
-})(jQuery);
+
+})
