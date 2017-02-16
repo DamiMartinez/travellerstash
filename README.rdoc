@@ -1,4 +1,3 @@
 == TravellerStash
 
 This website is a simple way to keep up with the latest technologies and trends in term of travel technology.
-<tt>rake doc:app</tt>.
